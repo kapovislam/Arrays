@@ -4,7 +4,74 @@ public class Main {
         task2();
         task3();
         task4();
+        //Часть 2
+        task5();
+        task6();
+        task7();
+        task8();
 
+    }
+
+    private static void task8() {
+        //Задание 2.4
+        /**
+         *Ф.И.О. сотрудников начали отображаться в обратную сторону.
+         * Напишите код, который в случае такого бага будет выводить Ф.И.О. сотрудников в корректном виде.
+         */
+        char[] reverseFullName = {'n', 'a', 'v', 'I', ' ', 'v', 'o', 'n', 'a', 'v', 'I'};
+        for (int i = reverseFullName.length - 1; i >= 0; i--) {
+            System.out.print(reverseFullName[i]);
+        }
+    }
+
+    private static void task7() {
+        //Задание 2.3
+        /**
+         * А теперь нам нужно понять, какую в среднем сумму наша компания тратила в течение данных 30 дней.
+         */
+        int arr[] = generateRandomArray();
+        double sum = 0;
+        for (int i = 0; i < arr.length; i++) {
+            sum += arr[i] / 30;
+        }
+        System.out.println(sum);
+    }
+
+    private static void task6() {
+        //Задание 2.2
+        /**
+         * Следующая задача — найти минимальную и максимальную трату за день.
+         */
+        int arr[] = generateRandomArray();
+        int maxDay = 0;
+        int minDay = 200000;
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] > maxDay) {
+                maxDay = arr[i];
+            }
+        }
+        System.out.println("Максимальная сумма трат за день составила " + maxDay + "  рублей");
+        for (int i = arr.length - 1; i >= 0; i--) {
+            if (arr[i] < minDay) {
+                minDay = arr[i];
+            }
+        }
+        System.out.println("Минимальная сумма трат за день составила " + minDay + "  рублей");
+    }
+
+    private static void task5() {
+        //Задание 2.1
+        /**
+         * Посчитать сумму всех выплат за месяц.
+         * Нужно написать программу, которая решит эту задачу, и вывести в консоль результат
+         * в формате: «Сумма трат за месяц составила … рублей».
+         */
+        int[] arr = generateRandomArray();
+        int sum = 0;
+        for (int i = 0; i < arr.length; i++) {
+            sum += arr[i];
+        }
+        System.out.println("Сумма трат за месяц составила " + sum + " рублей");
     }
 
     private static void task4() {
@@ -18,10 +85,10 @@ public class Main {
         month[1] = 2;
         month[2] = 3;
         for (int i = 0; i < month.length; i++) {
-            if (month[i]%2==0){
+            if (month[i] % 2 == 0) {
                 System.out.println(month[i]);
-            }else if (month[i] % 2 != 0) {
-                month[i]+=1;
+            } else if (month[i] % 2 != 0) {
+                month[i] += 1;
                 System.out.println(month[i]);
             }
         }
@@ -114,5 +181,14 @@ public class Main {
         double[] weight = {1.57, 7.654, 9.986};
         int[] passport = {14, 20, 45};
 
+    }
+
+    public static int[] generateRandomArray() {
+        java.util.Random random = new java.util.Random();
+        int[] arr = new int[30];
+        for (int i = 0; i < arr.length; i++) {
+            arr[i] = random.nextInt(100_000) + 100_000;
+        }
+        return arr;
     }
 }
